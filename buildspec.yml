@@ -8,11 +8,12 @@ phases:
   build:
     commands:
       - echo "Starting build..."
-      - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
-      - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $IMAGE_REPOSITORY:$IMAGE_TAG
+      - docker build -t test-eks .
+      - docker tag test-eks 787367611277.dkr.ecr.us-west-2.amazonaws.com/test-eks:v3
 
   post_build:
     commands:
       - echo "Pushing image to registry..."
       - echo "docker push $IMAGE_REPOSITORY:$IMAGE_TAG"
-      - docker push $IMAGE_REPOSITORY:$IMAGE_TAG
+      - docker push 787367611277.dkr.ecr.us-west-2.amazonaws.com/test-eks:v3
+
